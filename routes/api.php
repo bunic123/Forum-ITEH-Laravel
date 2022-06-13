@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutfKontroler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ForumKontroler;
@@ -17,9 +18,11 @@ use App\Http\Controllers\ClanKontroler;
 |
 */
 
-Route::resource('forum', ForumKontroler::class)->only('index', 'show', 'destroy', 'update');
-Route::resource('clan', ClanKontroler::class)->only('index', 'show');
+Route::post('register', [AutfKontroler::class, 'register']);
+Route::post('login', [AutfKontroler::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::resource('forum', ForumKontroler::class)->only('index', 'show', 'destroy', 'update');
+    Route::resource('clan', ClanKontroler::class)->only('index', 'show');
+    Route::post('logout', [AutfKontroler::class, 'logout']);
 });
