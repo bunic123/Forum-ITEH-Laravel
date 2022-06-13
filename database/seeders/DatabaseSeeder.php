@@ -13,6 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $FS = new ForumSeeder;
+        $CS = new ClanSeeder;
+        $PS = new PostSeeder;
+
+        $FS->run();
+        $CS->run();
+        $PS->run();
     }
 }

@@ -11,6 +11,15 @@ class Clan extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'imePrezime',
+        'username',
+        'password',
+        'email',
+        'forum_id'
+    ];
+
+
     public function forum()
     {
         return $this->belongsTo(Forum::class);

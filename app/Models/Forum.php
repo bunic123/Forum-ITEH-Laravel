@@ -10,6 +10,13 @@ class Forum extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'url',
+        'email',
+        'instagram',
+        'osnivac'
+    ];
+
     public function clanovi()
     {
         return $this->hasMany(Clan::class);

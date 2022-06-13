@@ -10,6 +10,12 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'tekst',
+        'datum',
+        'clan_id',
+    ];
+
     public function clan()
     {
         return $this->belongsTo(Clan::class);
