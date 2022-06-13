@@ -17,8 +17,8 @@ use App\Http\Controllers\ClanKontroler;
 |
 */
 
-Route::resource('forum', ForumKontroler::class);
-Route::resource('clan', ClanKontroler::class);
+Route::resource('forum', ForumKontroler::class)->only('index', 'show', 'destroy', 'update');
+Route::resource('clan', ClanKontroler::class)->only('index', 'show');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

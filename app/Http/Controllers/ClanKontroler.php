@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ClanResurs;
 use App\Models\Clan;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class ClanKontroler extends Controller
      */
     public function index()
     {
-        //
+        $clanovi = Clan::all();
+
+        return ClanResurs::collection($clanovi);
     }
 
     /**
@@ -46,7 +49,7 @@ class ClanKontroler extends Controller
      */
     public function show(Clan $clan)
     {
-        //
+        return new ClanResurs($clan);
     }
 
     /**
